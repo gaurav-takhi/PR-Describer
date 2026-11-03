@@ -25,14 +25,14 @@ You need Google Chrome or Microsoft Edge. There is no build step and nothing to 
 1. **Get the code**
 
    ```bash
-   git clone git@github.com:gaurav-takhi/PR-Description.git
-   cd PR-Description
+   git clone git@github.com:gaurav-takhi/PR-Describer.git
+   cd PR-Describer
    ```
 
 2. **Load the extension**
    - Open `chrome://extensions` (or `edge://extensions`).
    - Turn on **Developer mode** (top right).
-   - Click **Load unpacked** and select the `PR-Description` folder.
+   - Click **Load unpacked** and select the `PR-Describer` folder.
    - Pin the extension from the puzzle-piece menu if you want its icon in the toolbar.
 
 3. **Configure (optional)**
