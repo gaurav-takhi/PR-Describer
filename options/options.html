@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PR Describer settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../icons/icon128.png" alt="" width="56" height="56">
+    <div>
+      <h1>PR Describer</h1>
+      <p>Auto-fill pull request titles and descriptions on Azure DevOps and GitHub.</p>
+    </div>
+    <span id="modeChip" class="chip">Rule-based</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-head">
+        <h2>Summarization</h2>
+        <p>Works with no setup. Add your own AI key for richer summaries. Keys stay in this browser and are sent only to the provider you pick.</p>
+      </div>
+
+      <div class="tiles" id="providerTiles" role="radiogroup" aria-label="Provider">
+        <label class="tile"><input type="radio" name="provider" value="none">
+          <span class="tile-icon">⚙️</span><span class="tile-title">Rules only</span><span class="tile-sub">Free · private · offline</span></label>
+        <label class="tile"><input type="radio" name="provider" value="gemini">
+          <span class="tile-icon">✨</span><span class="tile-title">Gemini</span><span class="tile-sub">Google AI</span></label>
+        <label class="tile"><input type="radio" name="provider" value="claude">
+          <span class="tile-icon">🟠</span><span class="tile-title">Claude</span><span class="tile-sub">Anthropic</span></label>
+        <label class="tile"><input type="radio" name="provider" value="openai">
+          <span class="tile-icon">🧠</span><span class="tile-title">OpenAI</span><span class="tile-sub">GPT models</span></label>
+      </div>
+
+      <div id="aiFields">
+        <div class="field">
+          <label for="apiKey">API key <a id="keyLink" href="#" target="_blank" rel="noreferrer">Get a key ↗</a></label>
+          <div class="input-wrap">
+            <input type="password" id="apiKey" autocomplete="off" spellcheck="false" placeholder="Paste your key">
+            <button type="button" class="ghost" data-reveal="apiKey" aria-label="Show or hide key">Show</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="model">Model <span class="muted">(blank = default)</span></label>
+          <input type="text" id="model" placeholder="gemini-3.8-flash">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Output</h2>
+        <p>Shape what gets written. These apply when an AI provider is selected.</p>
+      </div>
+      <div class="field">
+        <label for="template">PR template</label>
+        <textarea id="template" placeholder="## What&#10;## Why&#10;## How to test"></textarea>
+      </div>
+      <div class="field">
+        <label for="customInstructions">Extra instructions</label>
+        <textarea id="customInstructions" placeholder="e.g. Keep it short. Call out breaking changes."></textarea>
+      </div>
+      <div class="switch-row">
+        <div>
+          <strong>Send code diff to the AI</strong>
+          <p class="hint">GitHub only. Azure sends commits and the file list.</p>
+        </div>
+        <label class="switch"><input type="checkbox" id="includeDiff"><span></span></label>
+      </div>
+      <div class="field">
+        <label for="maxDiffChars">Max diff characters</label>
+        <input type="number" id="maxDiffChars" min="1000" step="1000">
+      </div>
+      <div class="field">
+        <label for="ignore">Ignore files <span class="muted">(one pattern per line)</span></label>
+        <textarea id="ignore"></textarea>
+      </div>
+    </section>
+  </main>
+
+  <footer class="savebar">
+    <span id="status" role="status"></span>
+    <button id="save" class="primary">Save settings</button>
+  </footer>
+  <script src="options.js" type="module"></script>
+</body>
+</html>
